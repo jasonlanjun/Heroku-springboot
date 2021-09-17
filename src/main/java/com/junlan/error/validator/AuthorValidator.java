@@ -7,7 +7,7 @@ import java.util.List;
 
 public class AuthorValidator implements ConstraintValidator<Author, String> {
 
-    List<String> authors = Arrays.asList("Santideva", "Marie Kondo", "Martin Fowler", "mkyong");
+    List<String> authors = Arrays.asList("Author1", "Author2", "Author3", "Author4");
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {

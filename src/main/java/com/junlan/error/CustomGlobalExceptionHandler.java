@@ -27,18 +27,6 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         response.sendError(HttpStatus.NOT_FOUND.value());
     }
 
-    /*@ExceptionHandler(BookNotFoundException.class)
-    public ResponseEntity<CustomErrorResponse> customHandleNotFound(Exception ex, WebRequest request) {
-
-        CustomErrorResponse errors = new CustomErrorResponse();
-        errors.setTimestamp(LocalDateTime.now());
-        errors.setError(ex.getMessage());
-        errors.setStatus(HttpStatus.NOT_FOUND.value());
-
-        return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
-
-    }*/
-
     @ExceptionHandler(BookUnSupportedFieldPatchException.class)
     public void springUnSupportedFieldPatch(HttpServletResponse response) throws IOException {
         response.sendError(HttpStatus.METHOD_NOT_ALLOWED.value());
@@ -71,10 +59,6 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         body.put("errors", errors);
 
         return new ResponseEntity<>(body, headers, status);
-
-        //Map<String, String> fieldErrors = ex.getBindingResult().getFieldErrors().stream().collect(
-        //        Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
-
     }
 
 }
